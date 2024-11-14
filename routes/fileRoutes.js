@@ -1,11 +1,10 @@
-// backend/routes/fileRoutes.js
-
+// routes/fileRoutes.js
 const express = require('express');
-const router = express.Router();
-const upload = require('../middleware/multerConfig'); // Import multer config
-const fileController = require('../controllers/fileController');
+const { uploadStudentsFromCSV } = require('../controllers/fileController');
+const upload = require('../middleware/multerConfig');
 
-// Route to handle file upload
-router.post('/upload', upload.single('file'), fileController.uploadFile);
+const router = express.Router();
+
+router.post('/upload-students', upload.single('file'), uploadStudentsFromCSV);
 
 module.exports = router;

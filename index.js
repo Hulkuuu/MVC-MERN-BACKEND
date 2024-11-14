@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const studentRoutes = require('./routes/studentRoutes');
 const facultyRoutes = require('./routes/facultyRoutes');
 const upload = require('./middleware/multerConfig'); // Import multer configuration
+const fileRoutes = require('./routes/fileRoutes'); // Import file routes
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 // Use Routes
 app.use('/api', studentRoutes);
 app.use('/api', facultyRoutes);
+app.use('/api', fileRoutes); // Add file routes
 
 // Serve static files from the 'uploads' folder
 app.use('/uploads', express.static('uploads'));
